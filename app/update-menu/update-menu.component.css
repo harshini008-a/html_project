@@ -1,0 +1,96 @@
+.update-menu-container {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+              url('/restaurant.jpg') no-repeat center center/cover;
+  font-family: 'Arial', sans-serif;
+  padding: 2rem;
+}
+
+.content-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.logout-btn {
+  color: #fff;
+  background: #2563eb;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #1e40af;
+}
+
+.action-btn {
+  color: #fff;
+  background: #2563eb;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: #1e40af;
+}
+
+.item {
+  transition: transform 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.02);
+}
+
+/* Added styles for images */
+.item img {
+  max-width: 200px; /* Set a reasonable maximum width for images */
+  max-height: 200px; /* Set a maximum height to maintain consistency */
+  width: 100%; /* Ensure responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Crop image to fit while preserving aspect ratio */
+  border-radius: 5px; /* Match the rounded aesthetic of other elements */
+  display: block; /* Prevent inline spacing issues */
+  margin: 0 auto; /* Center the image if needed */
+}
+
+/* Ensure images are responsive in smaller screens */
+@media (max-width: 768px) {
+  .update-menu-container {
+      padding: 1rem;
+  }
+
+  .header {
+      flex-direction: column;
+      gap: 1rem;
+  }
+
+  .item img {
+      max-width: 150px; /* Smaller images on mobile */
+      max-height: 150px;
+  }
+}

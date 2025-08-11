@@ -1,0 +1,52 @@
+<body style="background-image: url('/public/restaurant-bg.jpg'); background-size: cover; background-position: center;">
+  <h1>Payment</h1>
+  <div id="progressContainer" class="progress-container" style="display: none;">
+    <div id="progressBar" class="progress-bar"></div>
+  </div>
+  <div id="progressText" class="progress-text"></div>
+
+  <div class="payment-form">
+    <h3>Order Summary</h3>
+    <div class="cart-items" *ngIf="cartItems.length > 0; else emptyCart">
+      <div *ngFor="let cartItem of cartItems" class="cart-item">
+        <p>{{ cartItem.item.name }} (x{{ cartItem.quantity }}) - {{ cartItem.item.price }}</p>
+      </div>
+      <p><strong>Total Amount:</strong> ${{ totalAmount.toFixed(2) }}</p>
+    </div>
+    <ng-template #emptyCart>
+      <p>No items in cart.</p>
+    </ng-template>
+
+    <form #paymentForm="ngForm" (ngSubmit)="processPayment()">
+      <div class="form-group">
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="payment.cardNumber" required pattern="\d{16}" maxlength="16" placeholder="1234567890123456">
+        <div *ngIf="paymentForm.controls['cardNumber']?.invalid && paymentForm.controls['cardNumber']?.touched" class="error">
+          Please enter a valid 16-digit card number.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cardholderName">Cardholder Name:</label>
+        <input type="text" id="cardholderName" name="cardholderName" [(ngModel)]="payment.cardholderName" required>
+        <div *ngIf="paymentForm.controls['cardholderName']?.invalid && paymentForm.controls['cardholderName']?.touched" class="error">
+          Cardholder name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" name="expiryDate" [(ngModel)]="payment.expiryDate" required pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/YY">
+        <div *ngIf="paymentForm.controls['expiryDate']?.invalid && paymentForm.controls['expiryDate']?.touched" class="error">
+          Please enter a valid expiry date (MM/YY).
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" [(ngModel)]="payment.cvv" required pattern="\d{3,4}" maxlength="4">
+        <div *ngIf="paymentForm.controls['cvv']?.invalid && paymentForm.controls['cvv']?.touched" class="error">
+          Please enter a valid 3 or 4-digit CVV.
+        </div>
+      </div>
+      <button type="submit" [disabled]="paymentForm.invalid || cartItems.length === 0">Pay Now</button>
+    </form>
+  </div>
+</body>

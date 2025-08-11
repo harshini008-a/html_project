@@ -1,0 +1,89 @@
+<div class="home-container">
+  <!-- Header with Title and Auth Buttons -->
+  <header class="header">
+    <h1 class="restaurant-heading text-1xl md:text-1xl">BlueSky Restaurant</h1>
+    <a routerLink="/" class="logo">
+      <img src="/favicon.svg" alt="Bluesky Restaurant Logo">
+    </a>  
+    <div class="auth-buttons flex items-center">
+      <button (click)="navigateTo('signup')">Sign Up</button>
+      <button (click)="navigateTo('login')">Login</button>
+      <button (click)="navigateTo('login')">Book Table</button>
+    </div>
+  </header>
+
+  <!-- Centered Navigation -->
+  <nav class="center-nav">
+    <a (click)="scrollTo('home')">Home</a>
+    <a (click)="scrollTo('about')">About Us</a>
+    <a (click)="scrollTo('menu')">Special Menu</a>
+    <a (click)="scrollTo('contactus')">Contact Us</a>
+  </nav>
+
+  <!-- Slideshow with Quotes -->
+  <div class="slideshow-container" id="home">
+    <div class="slideshow-wrapper" [style.transform]="'translateX(-' + slideIndex * 100 + '%)'">
+      <div class="mySlides" *ngFor="let slide of slides; let i = index">
+        <img [src]="slide.image" [alt]="slide.alt">
+        <div class="quote-overlay">
+          <p class="slide-quote">{{ foodQuotes[i] }}</p>
+        </div>
+      </div>
+      <!-- Duplicate slides for seamless looping -->
+      <div class="mySlides" *ngFor="let slide of slides; let i = index">
+        <img [src]="slide.image" [alt]="slide.alt">
+        <div class="quote-overlay">
+          <p class="slide-quote">{{ foodQuotes[i] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Menu Section -->
+  <section class="special-section" id="menu">
+    <h2>Our Special Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-card" *ngFor="let item of specialMenuItems">
+        <img [src]="item.image" [alt]="item.name">
+        <div class="menu-card-content">
+          <h3>{{ item.name }}</h3>
+          <p class="price">{{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-6">
+      <button class="view-all-btn" (click)="navigateTo('login')">View All Menus</button>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="about-section" id="about">
+    <h2>About BlueSky Restaurant</h2>
+    <p>
+      Welcome to BlueSky Restaurant, where culinary excellence meets warm hospitality. Established in 2010, 
+      our family-owned restaurant has been serving delicious, high-quality dishes inspired by global cuisines. 
+      Our chefs use only the freshest ingredients to create memorable dining experiences, from savory entrees 
+      to delectable desserts. At BlueSky, we believe in creating a welcoming atmosphere where every guest feels 
+      at home. Join us for an unforgettable meal and become part of our story.
+    </p>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section class="contact-section" id="contactus">
+    <h2>Contact Us</h2>
+    <p>
+      We’d love to hear from you! Reach out to us for reservations, inquiries, or feedback.
+    </p>
+    <div class="contact-details">
+      <p><strong>Phone:</strong> (123) 456-7890</p>
+      <p><strong>Email:</strong> contact&#64;blueskyrestaurant.com</p>
+      <p><strong>Address:</strong> 123 Culinary Lane, Foodie City, FC 45678</p>
+      <p><strong>Follow Us:</strong></p>
+      <div class="social-links">
+        <a href="https://facebook.com/blueskyrestaurant" target="_blank">Facebook</a>
+        <a href="https://instagram.com/blueskyrestaurant" target="_blank">Instagram</a>
+        <a href="https://twitter.com/blueskyrestaurant" target="_blank">Twitter</a>
+      </div>
+    </div>
+  </section>
+</div>

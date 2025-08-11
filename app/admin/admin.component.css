@@ -1,0 +1,84 @@
+.admin-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('/restaurant.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #333;
+  font-family: 'Cooper Black',Cooper Black;
+}
+
+.content-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background: #218838;
+}
+
+.menu-table, .orders-table {
+  margin-top: 20px;
+}
+
+.menu-table h2, .orders-table h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background: #f4f4f4;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+input[type="number"] {
+  width: 60px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}

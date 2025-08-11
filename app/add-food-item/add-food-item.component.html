@@ -1,0 +1,60 @@
+<div class="add-food-container">
+  <div class="content-container">
+    <header class="header">
+      <h1 class="text-2xl md:text-3xl">Add New Food Item</h1>
+      <button class="logout-btn" (click)="goBack()">Back to Dashboard</button>
+    </header>
+
+    <div class="add-form mt-4">
+      <h2 class="text-xl font-bold mb-2">Add Food Item</h2>
+      <form [formGroup]="addForm" (ngSubmit)="addItem()" class="space-y-4">
+        <div>
+          <label for="name" class="block">Name</label>
+          <input id="name" formControlName="name" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="category" class="block">Category</label>
+          <select id="category" formControlName="category" class="w-full p-2 border rounded">
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="price" class="block">Price</label>
+          <input id="price" formControlName="price" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="rating" class="block">Rating (0-5)</label>
+          <input id="rating" formControlName="rating" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="quantity" class="block">Initial Quantity</label>
+          <input id="quantity" formControlName="quantity" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="image" class="block">Image</label>
+          <input id="image" type="file" (change)="onFileChange($event)" class="w-full p-2 border rounded">
+        </div>
+        <button type="submit" class="action-btn" [disabled]="addForm.invalid">Add Item</button>
+      </form>
+    </div>
+
+    <!-- Menu Items Display -->
+    <div class="cuisine-sections mt-8">
+      <section *ngFor="let section of filteredMenuItems" class="cuisine-section">
+        <h2 class="cuisine-title">{{ section.name }}</h2>
+        <p class="cuisine-description">{{ section.description }}</p>
+        <div class="menu-grid">
+          <div *ngFor="let item of section.items" class="menu-card">
+            <img [src]="getImageUrl(item.image)" [alt]="item.name" class="menu-image">
+            <div class="menu-card-content">
+              <h3>{{ item.name }}</h3>
+              <p class="price">{{ item.price }}</p>
+              <p class="rating">Rating: {{ item.rating }}/5</p>
+              <p class="quantity">Available: {{ item.quantity }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

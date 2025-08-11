@@ -1,0 +1,108 @@
+.add-food-container {
+  background: linear-gradient(rgba(5, 2, 2, 0.3), rgba(0, 0, 0, 0.3)), 
+  url('/restaurant.jpg') no-repeat center center/cover;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-form {
+  max-width: 500px;
+}
+
+.action-btn {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.cuisine-sections {
+  margin-top: 40px;
+}
+
+.cuisine-section {
+  margin-bottom: 40px;
+}
+
+.cuisine-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cuisine-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.menu-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.menu-card-content {
+  padding: 15px;
+}
+
+.menu-card-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.quantity {
+  color: #333;
+  font-size: 0.9rem;
+}

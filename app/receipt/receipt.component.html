@@ -1,0 +1,31 @@
+<div class="receipt-container">
+  <h1 class="restaurant-name">Cadelite Cafe</h1>
+  <h2 class="receipt-title">Restaurant Receipt</h2>
+  <hr class="divider" />
+
+  <div class="user-details">
+    <p><strong>Username:</strong> {{ receipt?.username ?? 'N/A' }}</p>
+    <p><strong>Email:</strong> {{ receipt?.email ?? 'N/A' }}</p>
+  </div>
+
+  <h3 class="section-title">Purchased Items</h3>
+  <div class="items-list">
+    <ul *ngIf="receipt && receipt.items && receipt.items.length > 0; else noItems">
+      <li *ngFor="let item of receipt.items">
+        {{ item.name }} (x{{ item.quantity }}) - ${{ formatPrice(item.price) }}
+      </li>
+    </ul>
+    <ng-template #noItems>
+      <p>No items purchased.</p>
+    </ng-template>
+  </div>
+
+  <div class="total-amount">
+    <p><strong>Total Amount:</strong> ${{ receipt && receipt.totalAmount != null ? receipt.totalAmount.toFixed(2) : '0.00' }}</p>
+  </div>
+
+  <div class="button-container">
+    <button class="download-btn" (click)="downloadPDF()">Download Receipt as PDF</button>
+    <button class="download-btn" (click)="goBack()">Back to Home</button>
+  </div>
+</div>

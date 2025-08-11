@@ -1,0 +1,37 @@
+<div class="viewmenu-container">
+  <div class="content-container">
+    <header class="header">
+      <h1 class="text-2xl md:text-3xl">All Menus</h1>
+      <div class="user-profile flex items-center gap-4">
+        <span class="username">{{ username }}</span>
+        <button class="history-btn" (click)="goToHistory()">View History</button>
+        <button class="cart-btn" (click)="goToCart()">Cart ({{ cartCount }})</button>
+        <button class="book-table-btn" (click)="navigateToBookTable()">Book Table</button>
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <div class="cuisine-sections">
+      <section *ngFor="let section of filteredMenuItems" class="cuisine-section">
+        <h2 class="cuisine-title">{{ section.name }}</h2>
+        <div class="menu-grid">
+          <div *ngFor="let item of section.items" class="menu-card">
+            <img [src]="item.image" [alt]="item.name" class="menu-image">
+            <div class="menu-card-content">
+              <h3>{{ item.name }}</h3>
+              <p class="description">{{ item.description }}</p>
+              <p class="price">{{ item.price }}</p>
+              <p class="rating">Rating: {{ item.rating }}/5</p>
+              <div class="flex gap-2 justify-center items-center">
+                <button class="quantity-btn" (click)="decrementQuantity(item)">-</button>
+                <span>{{ item.selectedQuantity }}</span>
+                <button class="quantity-btn" (click)="incrementQuantity(item)">+</button>
+                <button class="add-to-cart-btn" (click)="addToCart(item)">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

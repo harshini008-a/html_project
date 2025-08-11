@@ -1,0 +1,40 @@
+<div class="booktable-container">
+  <header class="header">
+    <h1>Book a Table</h1>
+    <div class="nav-buttons">
+      <button class="nav-btn" (click)="goBack()">Back</button>
+      <button class="nav-btn" (click)="goHome()">Home</button>
+    </div>
+  </header>
+  
+  <div class="table-grid">
+    <div class="table-card" *ngFor="let table of tables">
+      <img [src]="table.image" [alt]="'Table ' + table.number">
+      <p>Table {{ table.number }}</p>
+      <p>Capacity: {{ table.capacity }}</p>
+    </div>
+  </div>
+
+  <form (ngSubmit)="bookTable()">
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" id="date" [(ngModel)]="date" name="date" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input type="time" id="time" [(ngModel)]="time" name="time" required>
+    </div>
+    <div class="form-group">
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" [(ngModel)]="guests" name="guests" min="1" required>
+    </div>
+    <div class="form-group">
+      <label for="table">Select Table:</label>
+      <select id="table" [(ngModel)]="selectedTable" name="table" required>
+        <option value="" disabled>Select a table</option>
+        <option *ngFor="let table of tables" [value]="table.number">Table {{ table.number }} (Capacity: {{ table.capacity }})</option>
+      </select>
+    </div>
+    <button type="submit">Book Table</button>
+  </form>
+</div>

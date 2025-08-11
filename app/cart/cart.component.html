@@ -1,0 +1,42 @@
+<div class="cart-container">
+    <div class="content-container">
+      <!-- Header -->
+      <header class="header">
+        <h1 class="text-2xl md:text-3xl">Your Cart</h1>
+        <button class="back-btn" (click)="goBack()">Back to Menu</button>
+      </header>
+  
+      <!-- Cart Items -->
+      <div class="cart-items" *ngIf="cart.length > 0; else emptyCart">
+        <div class="cart-grid">
+          <div *ngFor="let cartItem of cart" class="cart-card">
+            <img [src]="cartItem.item.image" [alt]="cartItem.item.name">
+            <div class="cart-card-content">
+              <h3>{{ cartItem.item.name }}</h3>
+              <p class="description">{{ getDescription(cartItem.item.name) }}</p>
+              <p class="price">Price: {{ cartItem.item.price }}</p>
+              <p class="quantity">Quantity: {{ cartItem.quantity }}</p>
+              <p class="rating">Rating: {{ cartItem.item.rating }}/5</p>
+              <div class="flex gap-2 justify-center items-center">
+                <button class="quantity-btn" (click)="decrementQuantity(cartItem)">-</button>
+                <span>{{ cartItem.quantity }}</span>
+                <button class="quantity-btn" (click)="incrementQuantity(cartItem)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-section">
+          <p class="total">Total: {{ getTotalPrice() }}</p>
+          <button class="order-btn" (click)="placeOrder()">Order Now</button>
+        </div>
+      </div>
+  
+      <!-- Empty Cart Message -->
+      <ng-template #emptyCart>
+        <div class="empty-cart">
+          <p>Your cart is empty. Add some delicious items from the menu!</p>
+          <button class="back-btn" (click)="goBack()">Back to Menu</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>

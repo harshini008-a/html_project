@@ -1,0 +1,100 @@
+.booktable-container {
+    background: linear-gradient(rgba(5, 2, 2, 0.3), rgba(0, 0, 0, 0.3)), 
+              url('/restaurant.jpg') no-repeat center center/cover;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .back-btn {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .table-selection h2, .booking-form h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  .table-grid {
+    display: grid;
+    color: #ffffff;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .table-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .table-card.selected {
+    border-color: #007bff;
+    transform: scale(1.05);
+  }
+  
+  .table-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .table-info {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .form-group {
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #ccc;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }

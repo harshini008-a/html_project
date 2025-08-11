@@ -1,0 +1,68 @@
+<div class="update-menu-container">
+  <div class="content-container">
+    <header class="header">
+      <h1 class="text-2xl md:text-3xl">Update Menu</h1>
+      <button class="logout-btn" (click)="goBack()">Back to Dashboard</button>
+    </header>
+
+    <div class="menu-list mt-4">
+      <h2 class="text-xl font-bold mb-2">Menu Items</h2>
+      <div *ngFor="let menu of menus" class="category">
+        <h3 class="text-lg font-semibold">{{ menu.category }}</h3>
+        <p>{{ menu.description }}</p>
+        <div class="items grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div *ngFor="let item of menu.items" class="item border p-4 rounded">
+            <img [src]="item.image" alt="{{ item.name }}" class="w-full h-40 object-cover mb-2 rounded">
+            <h4>{{ item.name }}</h4>
+            <p>Price: {{ item.price }}</p>
+            <p>Rating: {{ item.rating }}</p>
+            <p>Category: {{ item.category }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Description: {{ item.description }}</p>
+            <div class="flex gap-2 mt-2">
+              <button class="action-btn" (click)="selectItem(item)">Update</button>
+              <button class="action-btn bg-red-600 hover:bg-red-700" (click)="deleteItem(item._id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="selectedItem" class="update-form mt-4">
+      <h2 class="text-xl font-bold mb-2">Update Item: {{ selectedItem.name }}</h2>
+      <form [formGroup]="updateForm" (ngSubmit)="updateItem()" class="space-y-4">
+        <div>
+          <label for="name" class="block">Name</label>
+          <input id="name" formControlName="name" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="category" class="block">Category</label>
+          <select id="category" formControlName="category" class="w-full p-2 border rounded">
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="price" class="block">Price</label>
+          <input id="price" formControlName="price" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="rating" class="block">Rating (0-5)</label>
+          <input id="rating" formControlName="rating" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="quantity" class="block">Quantity</label>
+          <input id="quantity" formControlName="quantity" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label for="description" class="block">Description</label>
+          <textarea id="description" formControlName="description" class="w-full p-2 border rounded"></textarea>
+        </div>
+        <div>
+          <label for="image" class="block">Image</label>
+          <input id="image" type="file" (change)="onFileChange($event)" class="w-full p-2 border rounded">
+        </div>
+        <button type="submit" class="action-btn" [disabled]="updateForm.invalid">Update Item</button>
+      </form>
+    </div>
+  </div>
+</div>
